@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>www.psyco.com</title>
+  <meta name="description" content="A creepy landing page demo for www.psyco.com with a big header and a Click to Play button." />
+  <style>
+    :root {
+      --bg: radial-gradient(circle at 50% 30%, #0f0f0f 0%, #000 80%);
+      --text: #e5e5e5;
+      --accent: #ff0000;
+      --muted: #9ca3af;
+      --btn-bg: #111;
+      --btn-hover: #ff0000;
+      --shadow: 0 0 40px rgba(255,0,0,0.5);
+    }
+    body {
+      margin: 0;
+      height: 100%;
+      font-family: 'Courier New', Courier, monospace;
+      color: var(--text);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 4rem;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-shadow: 0 0 15px rgba(255,0,0,0.7);
+      margin: 0 0 30px;
+      animation: flicker 2s infinite;
+    }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        opacity: 0.2;
+      }
+    }
+    .cta {
+      padding: 20px 40px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      background: var(--btn-bg);
+      color: var(--accent);
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease-in-out;
+    }
+    .cta:hover {
+      background: var(--btn-hover);
+      color: #000;
+      text-shadow: 0 0 10px #000;
+    }
+    footer {
+      position: absolute;
+      bottom: 10px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    /* Creepy animation for background */
+    body::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, rgba(255,0,0,0.03) 0, rgba(255,0,0,0.03) 2px, transparent 2px, transparent 4px);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      animation: scan 6s linear infinite;
+    }
+    @keyframes scan {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(100%); }
+    }
+  </style>
+</head>
+<body>
+  <h1>www.psyco.com</h1>
+  <button class="cta">Click to Play</button>
+  <footer>© <span id="year"></span> psyco.com — Enter at your own risk.</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.querySelector('.cta');
+    btn.addEventListener('click', () => {
+      alert("You shouldn't have clicked that...");
+    });
+  </script>
+</body>
+</html>
